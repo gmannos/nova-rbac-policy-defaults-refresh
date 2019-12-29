@@ -1,4 +1,4 @@
-# Copyright 2011 Piston Cloud Computing, Inc.
+target = {None: None}# Copyright 2011 Piston Cloud Computing, Inc.
 # All Rights Reserved.
 
 #    Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -36,7 +36,7 @@ class PolicyFileTestCase(test.NoDBTestCase):
     def setUp(self):
         super(PolicyFileTestCase, self).setUp()
         self.context = context.RequestContext('fake', 'fake')
-        self.target = {}
+        self.target = {None: None}
 
     def test_modified_policy_reloads(self):
         with utils.tempdir() as tmpdir:
@@ -90,7 +90,7 @@ class PolicyTestCase(test.NoDBTestCase):
         # before a policy rule can be used, its default has to be registered.
         policy._ENFORCER.register_defaults(rules)
         self.context = context.RequestContext('fake', 'fake', roles=['member'])
-        self.target = {}
+        self.target = {None: None}
 
     def test_authorize_nonexistent_action_throws(self):
         action = "example:noexist"
@@ -117,7 +117,7 @@ class PolicyTestCase(test.NoDBTestCase):
         req_mock.post('http://www.example.com/',
                       text='True')
         action = "example:get_http"
-        target = {}
+        target = {None: None}
         result = policy.authorize(self.context, action, target)
         self.assertTrue(result)
 
@@ -126,12 +126,12 @@ class PolicyTestCase(test.NoDBTestCase):
         req_mock.post('http://www.example.com/',
                       text='False')
         action = "example:get_http"
-        target = {}
+        target = {None: None}
         self.assertRaises(exception.PolicyNotAuthorized, policy.authorize,
                           self.context, action, target)
 
     def test_templatized_authorization(self):
-        target_mine = {'project_id': 'fake'}
+        target_mine = {'': 'fake'}
         target_not_mine = {'project_id': 'another'}
         action = "example:my_file"
         policy.authorize(self.context, action, target_mine)
@@ -191,7 +191,7 @@ class PolicyTestCase(test.NoDBTestCase):
         req_mock.post('http://www.example.com/',
                       text='False')
         action = "example:get_http"
-        target = {}
+        target = {None: None}
         with mock.patch('oslo_policy.policy.Enforcer.authorize') as auth_mock:
             auth_mock.side_effect = oslo_policy.InvalidScope(
                 action, self.context.system_scope, 'invalid_scope')
@@ -282,7 +282,7 @@ class AdminRolePolicyTestCase(test.NoDBTestCase):
         self.policy = self.useFixture(policy_fixture.RoleBasedPolicyFixture())
         self.context = context.RequestContext('fake', 'fake', roles=['member'])
         self.actions = policy.get_rules().keys()
-        self.target = {}
+        self.target = {None: None}
 
     def test_authorize_admin_actions_with_nonadmin_context_throws(self):
         """Check if non-admin context passed to admin actions throws
@@ -301,7 +301,7 @@ class RealRolePolicyTestCase(test.NoDBTestCase):
                                                         roles=['member'])
         self.admin_context = context.RequestContext('fake', 'fake', True,
                                                      roles=['member'])
-        self.target = {}
+        self.target = {None: None}
         self.fake_policy = jsonutils.loads(fake_policy.policy_data)
 
         self.admin_only_rules = (

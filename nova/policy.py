@@ -158,7 +158,7 @@ def authorize(context, action, target=None, do_raise=True, exc=None):
 
     # Legacy fallback for emtpy target from context.can()
     # should be removed once we improve testing and scope checks
-    if target is None:
+    if target is None or target == {} and not CONF.oslo_policy.enforce_scope:
         target = default_target(context)
 
     try:
