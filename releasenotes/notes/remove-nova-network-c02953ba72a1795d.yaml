@@ -1,0 +1,62 @@
+---
+upgrade:
+  - |
+    The *nova-network* feature has been deprecated since the 14.0.0 (Newton)
+    release and has now been removed. The remaining *nova-network* specific
+    REST APIs have been removed along with their related policy rules. Calling
+    these APIs will now result in a ``410 (Gone)`` error response.
+
+    * ``GET /os-security-group-default-rules``
+    * ``POST /os-security-group-default-rules``
+    * ``GET /os-security-group-default-rules/{id}``
+    * ``DELETE /os-security-group-default-rules/{id}``
+    * ``POST /os-networks``
+    * ``DELETE /os-networks``
+    * ``POST /os-networks/add``
+    * ``POST /os-networks/{id} (associate_host)``
+    * ``POST /os-networks/{id} (disassociate)``
+    * ``POST /os-networks/{id} (disassociate_host)``
+    * ``POST /os-networks/{id} (disassociate_project)``
+    * ``POST /os-tenant-networks``
+    * ``DELETE /os-tenant-networks``
+
+    The following policies have also been removed.
+
+    * ``os_compute_api:os-security-group-default-rules``
+    * ``os_compute_api:os-networks``
+    * ``os_compute_api:os-networks-associate``
+  - |
+    The ``networks`` quota, which was only enabled if the
+    ``enabled_network_quota`` config option was enabled and only useful with
+    *nova-network*, is removed. It will not longer be present in the responses
+    for the APIs while attempts to update the quota will be rejected.
+
+    * ``GET /os-quota-sets``
+    * ``GET /os-quota-sets/{project_id}``
+    * ``GET /os-quota-sets/{project_id}/defaults``
+    * ``GET /os-quota-sets/{project_id}/detail``
+    * ``PUT /os-quota-sets/{project_id}``
+    * ``GET /os-quota-class-sets/{id}``
+    * ``PUT /os-quota-class-sets/{id}``
+
+    The following related config options have been removed.
+
+    * ``enable_network_quota``
+    * ``quota_networks``
+  - |
+    The following ``nova-manage`` commands have been removed.
+
+    * ``network``
+    * ``floating``
+
+    These were only useful for the now-removed *nova-network* service and have
+    been deprecated since the 15.0.0 (Ocata) release.
+  - |
+    The ``nova-dhcpbridge`` service has been removed. This was only used with
+    the now-removed *nova-network* service.
+  - |
+    The following config options only applied when using the *nova-network*
+    network driver which has now been removed. The config options have
+    therefore been removed also.
+
+    * ``vmware.vlan_interface``
