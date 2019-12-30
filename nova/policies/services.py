@@ -19,6 +19,21 @@ from nova.policies import base
 
 
 BASE_POLICY_NAME = 'os_compute_api:os-services:%s'
+DEPRECATED_SERVICE_POLICY = policy.DeprecatedRule(
+    'os_compute_api:os-services',
+    base.RULE_ADMIN_API,
+)
+
+DEPRECATED_REASON = """
+Since Ussuri release, nova API policies are introducing new default roles
+with scope_type capabilities. These new changes improve the security level
+and manageability. New policies are more rich in term of handling access
+at system and project level token with read, write roles.
+Start using the new policies and enable the scope checks via config option
+``nova.conf [oslo_policy] enforce_scope=True`` which is False by default.
+Old policies are marked as deprecated and silently going to be ignored
+in nova 23.0.0 (OpenStack W) release
+"""
 
 services_policies = [
     policy.DocumentedRuleDefault(
@@ -31,7 +46,10 @@ services_policies = [
                 'path': '/os-services'
             }
         ],
-        scope_types=['system']),
+        scope_types=['system'],
+        deprecated_rule=DEPRECATED_SERVICE_POLICY,
+        deprecated_reason=DEPRECATED_REASON,
+        deprecated_since='20.0.0'),
     policy.DocumentedRuleDefault(
         name=BASE_POLICY_NAME % 'update',
         check_str=base.SYSTEM_ADMIN,
@@ -43,7 +61,10 @@ services_policies = [
                 'path': '/os-services/{service_id}'
             },
         ],
-        scope_types=['system']),
+        scope_types=['system'],
+        deprecated_rule=DEPRECATED_SERVICE_POLICY,
+        deprecated_reason=DEPRECATED_REASON,
+        deprecated_since='20.0.0'),
     policy.DocumentedRuleDefault(
         name=BASE_POLICY_NAME % 'delete',
         check_str=base.SYSTEM_ADMIN,
@@ -54,7 +75,10 @@ services_policies = [
                 'path': '/os-services/{service_id}'
             }
         ],
-        scope_types=['system']),
+        scope_types=['system'],
+        deprecated_rule=DEPRECATED_SERVICE_POLICY,
+        deprecated_reason=DEPRECATED_REASON,
+        deprecated_since='20.0.0'),
 ]
 
 
