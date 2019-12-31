@@ -41,8 +41,7 @@ class AdminPasswordController(wsgi.Controller):
         context = req.environ['nova.context']
         instance = common.get_instance(self.compute_api, context, id)
         context.can(ap_policies.BASE_POLICY_NAME,
-                    target={'user_id': instance.user_id,
-                            'project_id': instance.project_id})
+                    target={'project_id': instance.project_id})
 
         password = body['changePassword']['adminPass']
         try:
