@@ -32,7 +32,7 @@ admin_password_policies = [
                 'method': 'POST'
             }
         ],
-        scope_types=['system'])
+        scope_types=['system', 'project'])
 ]
 
 
