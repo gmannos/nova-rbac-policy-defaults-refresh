@@ -131,7 +131,7 @@ class PolicyTestCase(test.NoDBTestCase):
                           self.context, action, target)
 
     def test_templatized_authorization(self):
-        target_mine = {'': 'fake'}
+        target_mine = {'project_id': 'fake'}
         target_not_mine = {'project_id': 'another'}
         action = "example:my_file"
         policy.authorize(self.context, action, target_mine)
