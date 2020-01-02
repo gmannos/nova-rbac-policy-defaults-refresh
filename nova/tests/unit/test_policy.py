@@ -1,4 +1,4 @@
-target = {None: None}# Copyright 2011 Piston Cloud Computing, Inc.
+# Copyright 2011 Piston Cloud Computing, Inc.
 # All Rights Reserved.
 
 #    Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -328,7 +328,9 @@ class RealRolePolicyTestCase(test.NoDBTestCase):
 "os_compute_api:os-aggregates:add_host",
 "os_compute_api:os-aggregates:remove_host",
 "os_compute_api:os-aggregates:set_metadata",
-"os_compute_api:os-agents",
+"os_compute_api:os-agents:create",
+"os_compute_api:os-agents:update",
+"os_compute_api:os-agents:delete",
 "os_compute_api:os-baremetal-nodes",
 "os_compute_api:os-evacuate",
 "os_compute_api:os-extended-server-attributes",
@@ -459,6 +461,7 @@ class RealRolePolicyTestCase(test.NoDBTestCase):
 
         self.system_reader_rules = (
 "os_compute_api:os-services:list",
+"os_compute_api:os-agents:list"
 )
 
         self.allow_nobody_rules = (
