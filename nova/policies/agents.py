@@ -47,7 +47,8 @@ It is used to force the upgrade of the XenAPI guest agent on instance boot.
                 'path': '/os-agents/{agent_build_id}',
                 'method': 'DELETE'
             }
-        ]),
+        ],
+        scope_types=['system']),
 ]
 
 
