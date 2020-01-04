@@ -32,7 +32,8 @@ aggregates_policies = [
                 'path': '/os-aggregates/{aggregate_id}/action (set_metadata)',
                 'method': 'POST'
             }
-        ]),
+        ],
+        scope_types=['system']),
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'add_host',
         base.RULE_ADMIN_API,
@@ -42,7 +43,8 @@ aggregates_policies = [
                 'path': '/os-aggregates/{aggregate_id}/action (add_host)',
                 'method': 'POST'
             }
-        ]),
+        ],
+        scope_types=['system']),
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'create',
         base.RULE_ADMIN_API,
@@ -52,7 +54,8 @@ aggregates_policies = [
                 'path': '/os-aggregates',
                 'method': 'POST'
             }
-        ]),
+        ],
+        scope_types=['system']),
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'remove_host',
         base.RULE_ADMIN_API,
@@ -62,7 +65,8 @@ aggregates_policies = [
                 'path': '/os-aggregates/{aggregate_id}/action (remove_host)',
                 'method': 'POST'
             }
-        ]),
+        ],
+        scope_types=['system']),
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'update',
         base.RULE_ADMIN_API,
@@ -72,7 +76,8 @@ aggregates_policies = [
                 'path': '/os-aggregates/{aggregate_id}',
                 'method': 'PUT'
             }
-        ]),
+        ],
+        scope_types=['system']),
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'index',
         base.RULE_ADMIN_API,
@@ -82,7 +87,8 @@ aggregates_policies = [
                 'path': '/os-aggregates',
                 'method': 'GET'
             }
-        ]),
+        ],
+        scope_types=['system']),
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'delete',
         base.RULE_ADMIN_API,
@@ -92,7 +98,8 @@ aggregates_policies = [
                 'path': '/os-aggregates/{aggregate_id}',
                 'method': 'DELETE'
             }
-        ]),
+        ],
+        scope_types=['system']),
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'show',
         base.RULE_ADMIN_API,
@@ -102,7 +109,8 @@ aggregates_policies = [
                 'path': '/os-aggregates/{aggregate_id}',
                 'method': 'GET'
             }
-        ]),
+        ],
+        scope_types=['system']),
     policy.DocumentedRuleDefault(
         NEW_POLICY_ROOT % 'images',
         base.RULE_ADMIN_API,
@@ -112,7 +120,8 @@ aggregates_policies = [
                 'path': '/os-aggregates/{aggregate_id}/images',
                 'method': 'POST'
             }
-        ]),
+        ],
+        scope_types=['system']),
 ]
 
 
