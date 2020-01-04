@@ -25,7 +25,7 @@ NEW_POLICY_ROOT = 'compute:aggregates:%s'
 aggregates_policies = [
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'set_metadata',
-        base.RULE_ADMIN_API,
+        base.SYSTEM_ADMIN,
         "Create or replace metadata for an aggregate",
         [
             {
@@ -36,7 +36,7 @@ aggregates_policies = [
         scope_types=['system']),
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'add_host',
-        base.RULE_ADMIN_API,
+        base.SYSTEM_ADMIN,
         "Add a host to an aggregate",
         [
             {
@@ -47,7 +47,7 @@ aggregates_policies = [
         scope_types=['system']),
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'create',
-        base.RULE_ADMIN_API,
+        base.SYSTEM_ADMIN,
         "Create an aggregate",
         [
             {
@@ -58,7 +58,7 @@ aggregates_policies = [
         scope_types=['system']),
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'remove_host',
-        base.RULE_ADMIN_API,
+        base.SYSTEM_ADMIN,
         "Remove a host from an aggregate",
         [
             {
@@ -69,7 +69,7 @@ aggregates_policies = [
         scope_types=['system']),
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'update',
-        base.RULE_ADMIN_API,
+        base.SYSTEM_ADMIN,
         "Update name and/or availability zone for an aggregate",
         [
             {
@@ -80,7 +80,7 @@ aggregates_policies = [
         scope_types=['system']),
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'index',
-        base.RULE_ADMIN_API,
+        base.SYSTEM_ADMIN,
         "List all aggregates",
         [
             {
@@ -91,7 +91,7 @@ aggregates_policies = [
         scope_types=['system']),
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'delete',
-        base.RULE_ADMIN_API,
+        base.SYSTEM_ADMIN,
         "Delete an aggregate",
         [
             {
@@ -102,7 +102,7 @@ aggregates_policies = [
         scope_types=['system']),
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'show',
-        base.RULE_ADMIN_API,
+        base.SYSTEM_ADMIN,
         "Show details for an aggregate",
         [
             {
@@ -113,7 +113,7 @@ aggregates_policies = [
         scope_types=['system']),
     policy.DocumentedRuleDefault(
         NEW_POLICY_ROOT % 'images',
-        base.RULE_ADMIN_API,
+        base.SYSTEM_ADMIN,
         "Request image caching for an aggregate",
         [
             {
