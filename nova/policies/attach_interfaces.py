@@ -25,7 +25,7 @@ POLICY_ROOT = 'os_compute_api:os-attach-interfaces:%s'
 attach_interfaces_policies = [
     policy.DocumentedRuleDefault(
         BASE_POLICY_NAME,
-        base.RULE_ADMIN_OR_OWNER,
+        base.PROJECT_MEMBER_OR_SYSTEM_ADMIN,
         "List port interfaces or show details of a port interface attached "
         "to a server",
         [
@@ -41,7 +41,7 @@ attach_interfaces_policies = [
         scope_types=['system', 'project']),
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'create',
-        base.RULE_ADMIN_OR_OWNER,
+        base.PROJECT_MEMBER_OR_SYSTEM_ADMIN,
         "Attach an interface to a server",
         [
             {
@@ -52,7 +52,7 @@ attach_interfaces_policies = [
         scope_types=['system', 'project']),
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'delete',
-        base.RULE_ADMIN_OR_OWNER,
+        base.PROJECT_MEMBER_OR_SYSTEM_ADMIN,
         "Detach an interface from a server",
         [
             {
