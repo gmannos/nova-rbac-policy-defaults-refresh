@@ -37,7 +37,8 @@ attach_interfaces_policies = [
                 'method': 'GET',
                 'path': '/servers/{server_id}/os-interface/{port_id}'
             }
-        ]),
+        ],
+        scope_types=['system', 'project']),
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'create',
         base.RULE_ADMIN_OR_OWNER,
@@ -47,7 +48,8 @@ attach_interfaces_policies = [
                 'method': 'POST',
                 'path': '/servers/{server_id}/os-interface'
             }
-        ]),
+        ],
+        scope_types=['system', 'project']),
     policy.DocumentedRuleDefault(
         POLICY_ROOT % 'delete',
         base.RULE_ADMIN_OR_OWNER,
@@ -57,7 +59,8 @@ attach_interfaces_policies = [
                 'method': 'DELETE',
                 'path': '/servers/{server_id}/os-interface/{port_id}'
             }
-        ])
+        ],
+        scope_types=['system', 'project'])
 ]
 
 
