@@ -1357,7 +1357,7 @@ class LinuxBridgeInterfaceDriver(LinuxNetInterfaceDriver):
             out, err = nova.privsep.linux_net.bridge_add_interface(
                            bridge, interface)
             if (err and err != "device %s is already a member of a bridge; "
-                     "can't enslave it to bridge %s.\n" % (interface, bridge)):
+                     "can't ensubordinate it to bridge %s.\n" % (interface, bridge)):
                 msg = _('Failed to add interface: %s') % err
                 raise exception.NovaException(msg)
 
